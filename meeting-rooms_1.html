@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会議室 空き状況</title>
+<title>応接・会議室 空き状況</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
   :root {
@@ -24,19 +24,6 @@
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
   @keyframes spin{to{transform:rotate(360deg)}}
   main{padding:16px;max-width:500px;margin:0 auto;}
-  #setup-banner{background:#fff;border:1px solid #fde68a;border-radius:var(--radius);padding:16px;margin-bottom:16px;}
-  #setup-banner h2{font-size:14px;font-weight:700;color:#92400e;margin-bottom:10px;}
-  .step{background:#fffbeb;border-radius:10px;padding:12px 14px;margin-bottom:8px;font-size:12.5px;line-height:1.8;color:#78350f;border:1px solid #fde68a;}
-  .step a{color:#d97706;}
-  .step code{font-family:'DM Mono',monospace;background:rgba(0,0,0,0.06);padding:1px 5px;border-radius:4px;font-size:11.5px;}
-  .config-area{margin-top:12px;}
-  .config-area label{font-size:12px;font-weight:500;color:#92400e;display:block;margin-bottom:4px;}
-  .config-area textarea{width:100%;height:130px;font-family:'DM Mono',monospace;font-size:11.5px;border:1px solid #fde68a;border-radius:8px;padding:10px;background:#fffbeb;color:#78350f;resize:vertical;outline:none;}
-  .config-area textarea:focus{border-color:#f59e0b;}
-  .apply-btn{margin-top:8px;width:100%;padding:10px;background:#f59e0b;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
-  .apply-btn:hover{background:#d97706;}
-  .config-error{margin-top:6px;font-size:12px;color:var(--red);display:none;}
-  #rooms-section{display:none;}
   .section-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
   .room-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow);transition:border-color 0.2s,background 0.2s;}
   .room-card.occupied{border-color:var(--red-border);background:var(--red-bg);}
@@ -73,7 +60,7 @@
   .add-row input:focus{border-color:#9ca3af;}
   .add-btn{padding:8px 14px;background:#111827;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
   .add-btn:hover{background:#374151;}
-  .loading{text-align:center;padding:40px 0;color:var(--text-muted);font-size:13px;display:none;}
+  .loading{text-align:center;padding:40px 0;color:var(--text-muted);font-size:13px;}
   .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--text-muted);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 10px;}
   .footer{text-align:center;margin-top:24px;padding-bottom:24px;font-size:11px;color:#d1d5db;font-family:'DM Mono',monospace;}
 </style>
@@ -82,7 +69,7 @@
 
 <header>
   <div>
-    <div class="header-title">🏢 会議室 空き状況</div>
+    <div class="header-title">🏢 応接・会議室 空き状況</div>
     <div class="header-sub">リアルタイム共有</div>
   </div>
   <div class="conn-badge">
@@ -92,53 +79,23 @@
 </header>
 
 <main>
-  <div id="setup-banner">
-    <h2>⚙️ 初回セットアップ（1回だけ）</h2>
-    <div class="step">
-      <strong>Step 1</strong>　<a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> を開き「プロジェクトを作成」<br>
-      　→ プロジェクト名を入力（例: <code>meeting-rooms</code>）→ 作成
-    </div>
-    <div class="step">
-      <strong>Step 2</strong>　左メニュー「構築」→「<strong>Realtime Database</strong>」→「データベースを作成」<br>
-      　→ ロケーション: <code>asia-southeast1</code>（シンガポール）→「テストモードで開始」→「有効にする」
-    </div>
-    <div class="step">
-      <strong>Step 3</strong>　左メニュー「プロジェクトの設定」（⚙️）→「全般」タブ →「マイアプリ」→「&lt;/&gt;」ボタン<br>
-      　→ アプリ名を入力して「アプリを登録」→ 表示された <code>firebaseConfig</code> の <strong>{ … } の中身全体</strong>をコピー
-    </div>
-    <div class="config-area">
-      <label>コピーした内容を貼り付けてください：</label>
-      <textarea id="config-input" placeholder='{
-  "apiKey": "AIza...",
-  "authDomain": "your-app.firebaseapp.com",
-  "databaseURL": "https://your-app-default-rtdb.asia-southeast1.firebasedatabase.app",
-  "projectId": "your-app",
-  "storageBucket": "your-app.appspot.com",
-  "messagingSenderId": "123456789",
-  "appId": "1:123..."
-}'></textarea>
-      <div class="config-error" id="config-error">❌ 形式が正しくありません。{ … } の中身を貼り付けてください。</div>
-      <button class="apply-btn" id="apply-btn">接続する ▶</button>
-    </div>
-  </div>
-
   <div class="loading" id="loading">
     <div class="spinner"></div>
     接続中...
   </div>
 
-  <div id="rooms-section">
+  <div id="rooms-section" style="display:none;">
     <div class="section-label">現在の空き状況</div>
     <div id="rooms-container"></div>
     <div class="edit-section">
       <div class="edit-header" id="edit-header">
-        <span>会議室を追加・編集</span>
+        <span>応接・会議室を追加・編集</span>
         <div class="edit-toggle" id="edit-toggle">+</div>
       </div>
       <div class="edit-body" id="edit-body">
         <div id="edit-list"></div>
         <div class="add-row">
-          <input type="text" id="new-room-input" placeholder="新しい会議室名" maxlength="20">
+          <input type="text" id="new-room-input" placeholder="新しい部屋名" maxlength="20">
           <button class="add-btn" id="add-room-btn">追加</button>
         </div>
       </div>
@@ -148,10 +105,8 @@
   <div class="footer" id="footer-time"></div>
 </main>
 
-<!-- Firebase compat (グローバル変数として使える版) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-
 <script>
   var db, roomsRef;
   var rooms = {};
@@ -171,10 +126,10 @@
 
   function updateFooter() {
     var now = new Date();
-    var hh = now.getHours().toString().padStart(2,'0');
-    var mm = now.getMinutes().toString().padStart(2,'0');
-    var ss = now.getSeconds().toString().padStart(2,'0');
-    document.getElementById('footer-time').textContent = '最終更新 ' + hh + ':' + mm + ':' + ss;
+    document.getElementById('footer-time').textContent =
+      '最終更新 ' + now.getHours().toString().padStart(2,'0') + ':' +
+      now.getMinutes().toString().padStart(2,'0') + ':' +
+      now.getSeconds().toString().padStart(2,'0');
   }
 
   function renderRooms() {
@@ -197,7 +152,6 @@
         '</button>';
       container.appendChild(card);
     });
-
     container.querySelectorAll('.toggle-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var rid = btn.getAttribute('data-id');
@@ -222,7 +176,6 @@
         (entries.length > 1 ? '<button class="del-btn" data-id="' + id + '">削除</button>' : '');
       list.appendChild(row);
     });
-
     list.querySelectorAll('.save-name-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var rid = btn.getAttribute('data-id');
@@ -230,7 +183,6 @@
         if (val) roomsRef.child(rid).update({ name: val });
       });
     });
-
     list.querySelectorAll('.del-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (Object.keys(rooms).length <= 1) return;
@@ -267,42 +219,6 @@
     });
   }
 
-  // ── 保存済み設定を読み込む ──
-  var savedConfig = null;
-  try { savedConfig = JSON.parse(localStorage.getItem('fb-meeting-config')); } catch(e) {}
-  if (savedConfig && savedConfig.apiKey) {
-    document.getElementById('setup-banner').style.display = 'none';
-    document.getElementById('loading').style.display = 'block';
-    initFirebase(savedConfig);
-  }
-
-  // ── ボタンのイベント ──
-  document.getElementById('apply-btn').addEventListener('click', function() {
-    var raw = document.getElementById('config-input').value.trim();
-    var errEl = document.getElementById('config-error');
-    errEl.style.display = 'none';
-    try {
-      // コメント行を除去、変数宣言・末尾セミコロンを除去
-      var cleaned = raw
-        .split('\n')
-        .filter(function(l){ return !l.trim().startsWith('//'); })
-        .join('\n')
-        .replace(/^\s*(const|var|let)\s+\w+\s*=\s*/, '')
-        .replace(/;\s*$/, '')
-        .trim();
-      // JSオブジェクトのキーをクォートしてJSON化
-      var jsonStr = cleaned.replace(/([{,]\s*)(\w+)(\s*:)/g, '$1"$2"$3');
-      var cfg = JSON.parse(jsonStr);
-      if (!cfg.apiKey || !cfg.databaseURL) throw new Error('missing keys');
-      localStorage.setItem('fb-meeting-config', JSON.stringify(cfg));
-      document.getElementById('setup-banner').style.display = 'none';
-      document.getElementById('loading').style.display = 'block';
-      initFirebase(cfg);
-    } catch(e) {
-      errEl.style.display = 'block';
-    }
-  });
-
   document.getElementById('edit-header').addEventListener('click', function() {
     editOpen = !editOpen;
     document.getElementById('edit-toggle').className = 'edit-toggle' + (editOpen ? ' open' : '');
@@ -321,6 +237,18 @@
   setInterval(function() {
     if (Object.keys(rooms).length) { renderRooms(); updateFooter(); }
   }, 30000);
+
+  // ── Firebase設定（埋め込み済み）──
+  initFirebase({
+    apiKey: "AIzaSyBCcZwtlIJ9yOSls1bM1r4DXejLWaws2fo",
+    authDomain: "meeting-rooms-102af.firebaseapp.com",
+    databaseURL: "https://meeting-rooms-102af-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "meeting-rooms-102af",
+    storageBucket: "meeting-rooms-102af.firebasestorage.app",
+    messagingSenderId: "145722519408",
+    appId: "1:145722519408:web:f9c1a1abe4f979e94969b5",
+    measurementId: "G-43P48K9CFJ"
+  });
 </script>
 </body>
 </html>
