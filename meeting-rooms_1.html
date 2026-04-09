@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>応接・会議室 空き状況</title>
+<title>会議室 空き状況</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
   :root {
@@ -63,13 +63,34 @@
   .loading{text-align:center;padding:40px 0;color:var(--text-muted);font-size:13px;}
   .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--text-muted);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 10px;}
   .footer{text-align:center;margin-top:24px;padding-bottom:24px;font-size:11px;color:#d1d5db;font-family:'DM Mono',monospace;}
+
+  .auth-overlay{position:fixed;inset:0;background:#f3f4f6;display:flex;align-items:center;justify-content:center;z-index:100;}
+  .auth-box{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px 24px;width:90%;max-width:320px;text-align:center;box-shadow:var(--shadow);}
+  .auth-title{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .auth-sub{font-size:12px;color:var(--text-muted);margin-bottom:20px;}
+  .auth-input{width:100%;padding:10px 14px;font-size:18px;letter-spacing:0.2em;text-align:center;border:1.5px solid var(--border);border-radius:9px;outline:none;font-family:'DM Mono',monospace;}
+  .auth-input:focus{border-color:#9ca3af;}
+  .auth-btn{margin-top:12px;width:100%;padding:10px;background:#111827;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+  .auth-btn:hover{background:#374151;}
+  .auth-error{margin-top:8px;font-size:12px;color:var(--red);display:none;}
 </style>
 </head>
 <body>
 
+
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-title">🔐 会議室 空き状況</div>
+    <div class="auth-sub">合言葉を入力してください</div>
+    <input type="password" class="auth-input" id="auth-input" placeholder="••••" maxlength="20">
+    <div class="auth-error" id="auth-error">合言葉が違います</div>
+    <button class="auth-btn" id="auth-btn">入力</button>
+  </div>
+</div>
+
 <header>
   <div>
-    <div class="header-title">🏢 応接・会議室 空き状況</div>
+    <div class="header-title">🏢 会議室 空き状況</div>
     <div class="header-sub">リアルタイム共有</div>
   </div>
   <div class="conn-badge">
@@ -89,13 +110,13 @@
     <div id="rooms-container"></div>
     <div class="edit-section">
       <div class="edit-header" id="edit-header">
-        <span>応接・会議室を追加・編集</span>
+        <span>会議室を追加・編集</span>
         <div class="edit-toggle" id="edit-toggle">+</div>
       </div>
       <div class="edit-body" id="edit-body">
         <div id="edit-list"></div>
         <div class="add-row">
-          <input type="text" id="new-room-input" placeholder="新しい部屋名" maxlength="20">
+          <input type="text" id="new-room-input" placeholder="新しい会議室名" maxlength="20">
           <button class="add-btn" id="add-room-btn">追加</button>
         </div>
       </div>
@@ -237,6 +258,39 @@
   setInterval(function() {
     if (Object.keys(rooms).length) { renderRooms(); updateFooter(); }
   }, 30000);
+
+
+  // ── 合言葉認証 ──
+  var PASSWORD = '210';
+  var AUTH_KEY = 'meeting-auth';
+
+  function showApp() {
+    document.getElementById('auth-overlay').style.display = 'none';
+  }
+
+  function checkAuth() {
+    if (localStorage.getItem(AUTH_KEY) === 'ok') {
+      showApp();
+    }
+  }
+
+  document.getElementById('auth-btn').addEventListener('click', function() {
+    var val = document.getElementById('auth-input').value;
+    if (val === PASSWORD) {
+      localStorage.setItem(AUTH_KEY, 'ok');
+      showApp();
+    } else {
+      document.getElementById('auth-error').style.display = 'block';
+      document.getElementById('auth-input').value = '';
+      document.getElementById('auth-input').focus();
+    }
+  });
+
+  document.getElementById('auth-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('auth-btn').click();
+  });
+
+  checkAuth();
 
   // ── Firebase設定（埋め込み済み）──
   initFirebase({
