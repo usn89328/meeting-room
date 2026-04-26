@@ -44,7 +44,6 @@
   .room-card.free .toggle-btn{background:var(--red);color:#fff;}
   .room-card.occupied .toggle-btn{background:var(--green);color:#fff;}
 
-  /* 編集セクション */
   .edit-section{margin-top:20px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
   .edit-header{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
   .edit-header span{font-size:13px;font-weight:700;color:var(--text-muted);}
@@ -60,39 +59,28 @@
   .sensor-row{display:flex;align-items:center;gap:6px;}
   .sensor-row label{font-size:11px;color:var(--text-muted);white-space:nowrap;}
   .sensor-select{flex:1;font-size:11px;padding:5px 8px;border:1px solid var(--border);border-radius:7px;background:var(--gray-light);color:var(--text);font-family:'DM Mono',monospace;outline:none;}
-  .sensor-select:focus{border-color:#9ca3af;}
   .del-btn{padding:6px 10px;background:var(--red-bg);border:1px solid var(--red-border);border-radius:7px;color:var(--red);font-size:13px;cursor:pointer;flex-shrink:0;}
   .save-name-btn{padding:6px 10px;background:var(--gray-light);border:1px solid var(--border);border-radius:7px;color:var(--text-muted);font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;flex-shrink:0;}
-  .save-name-btn:hover{background:var(--border);}
   .add-row{display:flex;gap:8px;margin-top:10px;}
   .add-row input{flex:1;font-size:13px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--gray-light);color:var(--text);font-family:'Noto Sans JP',sans-serif;outline:none;}
-  .add-row input:focus{border-color:#9ca3af;}
   .add-btn{padding:8px 14px;background:#111827;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
-  .add-btn:hover{background:#374151;}
 
-  /* SwitchBot設定セクション */
-  .switchbot-section{margin-top:12px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-  .switchbot-header{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
-  .switchbot-header span{font-size:13px;font-weight:700;color:var(--text-muted);}
-  .switchbot-body{display:none;padding:0 16px 14px;border-top:1px solid var(--border);}
-  .switchbot-body.open{display:block;}
-  .sb-field{margin-top:10px;}
-  .sb-field label{font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px;}
-  .sb-field input{width:100%;font-size:11px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--gray-light);color:var(--text);font-family:'DM Mono',monospace;outline:none;}
-  .sb-field input:focus{border-color:#9ca3af;}
-  .sb-actions{display:flex;gap:8px;margin-top:12px;}
-  .sb-save-btn{flex:1;padding:9px;background:#111827;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
-  .sb-save-btn:hover{background:#374151;}
-  .sb-test-btn{padding:9px 14px;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+  .sensor-section{margin-top:12px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .sensor-header{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+  .sensor-header span{font-size:13px;font-weight:700;color:var(--text-muted);}
+  .sensor-body{display:none;padding:0 16px 14px;border-top:1px solid var(--border);}
+  .sensor-body.open{display:block;}
   .sb-status{margin-top:8px;font-size:11px;padding:6px 10px;border-radius:7px;display:none;}
   .sb-status.ok{display:block;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
   .sb-status.err{display:block;background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
   .sb-status.info{display:block;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);}
-  .sb-devices{margin-top:10px;}
-  .sb-device-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:12px;}
-  .sb-device-item:last-child{border-bottom:none;}
-  .sb-device-id{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);}
-  .sb-device-type{font-size:10px;color:var(--text-muted);background:var(--gray-light);border-radius:4px;padding:1px 6px;}
+  .fetch-btn{margin-top:12px;width:100%;padding:9px;background:#111827;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+  .device-list{margin-top:10px;}
+  .device-item{font-size:12px;padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;align-items:center;gap:8px;}
+  .device-item:last-child{border-bottom:none;}
+  .device-name{flex:1;font-weight:600;}
+  .device-id{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);}
+  .device-type{font-size:10px;color:var(--text-muted);background:var(--gray-light);border-radius:4px;padding:1px 6px;}
 
   .loading{text-align:center;padding:40px 0;color:var(--text-muted);font-size:13px;}
   .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--text-muted);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 10px;}
@@ -103,9 +91,7 @@
   .auth-title{font-size:16px;font-weight:700;margin-bottom:6px;}
   .auth-sub{font-size:12px;color:var(--text-muted);margin-bottom:20px;}
   .auth-input{width:100%;padding:10px 14px;font-size:18px;letter-spacing:0.2em;text-align:center;border:1.5px solid var(--border);border-radius:9px;outline:none;font-family:'DM Mono',monospace;}
-  .auth-input:focus{border-color:#9ca3af;}
   .auth-btn{margin-top:12px;width:100%;padding:10px;background:#111827;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
-  .auth-btn:hover{background:#374151;}
   .auth-error{margin-top:8px;font-size:12px;color:var(--red);display:none;}
 </style>
 </head>
@@ -151,33 +137,22 @@
       <div class="edit-body" id="edit-body">
         <div id="edit-list"></div>
         <div class="add-row">
-          <input type="text" id="new-room-input" placeholder="新しい応接室名" maxlength="20">
+          <input type="text" id="new-room-input" placeholder="新しい応接室名" maxlength="30">
           <button class="add-btn" id="add-room-btn">追加</button>
         </div>
       </div>
     </div>
 
-    <!-- SwitchBot設定 -->
-    <div class="switchbot-section">
-      <div class="switchbot-header" id="sb-header">
-        <span>💡 SwitchBot センサー設定</span>
-        <div class="edit-toggle" id="sb-toggle">+</div>
+    <!-- センサー設定 -->
+    <div class="sensor-section">
+      <div class="sensor-header" id="sensor-header">
+        <span>💡 センサー設定</span>
+        <div class="edit-toggle" id="sensor-toggle">+</div>
       </div>
-      <div class="switchbot-body" id="sb-body">
-        <div class="sb-field">
-          <label>APIトークン</label>
-          <input type="text" id="sb-token" placeholder="トークンを入力..." autocomplete="off">
-        </div>
-        <div class="sb-field">
-          <label>クライアントシークレット</label>
-          <input type="text" id="sb-secret" placeholder="シークレットを入力..." autocomplete="off">
-        </div>
-        <div class="sb-actions">
-          <button class="sb-save-btn" id="sb-save-btn">保存</button>
-          <button class="sb-test-btn" id="sb-fetch-btn">デバイス取得</button>
-        </div>
+      <div class="sensor-body" id="sensor-body">
         <div class="sb-status" id="sb-status"></div>
-        <div class="sb-devices" id="sb-devices"></div>
+        <button class="fetch-btn" id="fetch-devices-btn">🔄 デバイス一覧を取得</button>
+        <div class="device-list" id="device-list"></div>
       </div>
     </div>
   </div>
@@ -188,77 +163,15 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script>
-  var db, roomsRef, sensorsRef;
+  var db, roomsRef, sensorConfigRef;
   var rooms = {};
-  var sensorMap = {}; // deviceId -> roomFirebaseKey
+  var sensorConfig = {}; // { key: { deviceId, roomKey, deviceName } }
+  var knownDevices = [];
   var editOpen = false;
-  var sbOpen = false;
-  var sbToken = '';
-  var sbSecret = '';
-  var knownDevices = []; // [{deviceId, deviceName, deviceType}]
+  var sensorOpen = false;
 
-  // ── SwitchBot API署名生成（Web Crypto API使用） ──
-  async function makeSwitchBotHeaders(token, secret) {
-    var t = Date.now().toString();
-    var nonce = Math.random().toString(36).substring(2, 10);
-    var stringToSign = token + t + nonce;
-    var enc = new TextEncoder();
-    var key = await crypto.subtle.importKey(
-      'raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
-    );
-    var sig = await crypto.subtle.sign('HMAC', key, enc.encode(stringToSign));
-    var sign = btoa(String.fromCharCode(...new Uint8Array(sig)));
-    return { 'Authorization': token, 'sign': sign, 'nonce': nonce, 't': t, 'Content-Type': 'application/json' };
-  }
+  var GAS_URL = "https://script.google.com/macros/s/AKfycbxftf7Q2KETmic87GjVZW0LIZxSIKOerHi2yBk2-Oehbq1VFZjuJf4KdSR20_yAMO_i/exec";
 
-  // ── SwitchBot デバイス一覧取得 ──
-  async function fetchSwitchBotDevices(token, secret) {
-    var headers = await makeSwitchBotHeaders(token, secret);
-    var res = await fetch('https://api.switch-bot.com/v1.1/devices', { headers: headers });
-    var json = await res.json();
-    return json;
-  }
-
-  // ── SwitchBot センサーの照度を取得 ──
-  async function fetchSensorStatus(token, secret, deviceId) {
-    var headers = await makeSwitchBotHeaders(token, secret);
-    var res = await fetch('https://api.switch-bot.com/v1.1/devices/' + encodeURIComponent(deviceId) + '/status', { headers: headers });
-    var json = await res.json();
-    return json;
-  }
-
-  // ── センサーポーリング（30秒ごと） ──
-  async function pollSensors() {
-    if (!sbToken || !sbSecret) return;
-    var entries = Object.entries(sensorMap);
-    if (!entries.length) return;
-
-    for (var i = 0; i < entries.length; i++) {
-      var deviceId = entries[i][0];
-      var roomKey = entries[i][1];
-      if (!roomKey || !rooms[roomKey]) continue;
-      try {
-        var data = await fetchSensorStatus(sbToken, sbSecret, deviceId);
-        if (data.statusCode === 100 && data.body) {
-          // brightness: 0=暗い(空室), 1=明るい(使用中)
-          var brightness = data.body.brightness;
-          var isOccupied = (brightness === 'bright' || brightness === 1 || (typeof brightness === 'number' && brightness > 50));
-          var currentRoom = rooms[roomKey];
-          // 状態が変わったときだけ更新
-          if (currentRoom.occupied !== isOccupied) {
-            roomsRef.child(roomKey).update({
-              occupied: isOccupied,
-              since: isOccupied ? Date.now() : null
-            });
-          }
-        }
-      } catch(e) {
-        console.warn('センサー取得エラー:', deviceId, e);
-      }
-    }
-  }
-
-  // ── ユーティリティ ──
   function esc(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
@@ -279,19 +192,31 @@
       now.getSeconds().toString().padStart(2,'0');
   }
 
-  // ── センサーが紐付いているデバイスIDを返す ──
-  function getSensorDeviceForRoom(roomKey) {
-    return Object.keys(sensorMap).find(function(did) { return sensorMap[did] === roomKey; }) || '';
+  // センサーが紐付いている部屋キーを返す
+  function getLinkedDevice(roomKey) {
+    var found = '';
+    Object.values(sensorConfig).forEach(function(cfg) {
+      if (cfg.roomKey === roomKey) found = cfg.deviceId;
+    });
+    return found;
   }
 
-  // ── 部屋カード描画 ──
+  function getLinkedDeviceName(roomKey) {
+    var found = '';
+    Object.values(sensorConfig).forEach(function(cfg) {
+      if (cfg.roomKey === roomKey) found = cfg.deviceName || cfg.deviceId;
+    });
+    return found;
+  }
+
+  // 部屋カード描画
   function renderRooms() {
     var container = document.getElementById('rooms-container');
     container.innerHTML = '';
     var entries = Object.entries(rooms).sort(function(a,b){ return (a[1].order||0)-(b[1].order||0); });
     entries.forEach(function(entry) {
       var id = entry[0], room = entry[1];
-      var linkedDevice = getSensorDeviceForRoom(id);
+      var linkedName = getLinkedDeviceName(id);
       var card = document.createElement('div');
       card.className = 'room-card ' + (room.occupied ? 'occupied' : 'free');
       card.innerHTML =
@@ -300,7 +225,7 @@
           '<div class="room-name">' + esc(room.name) + '</div>' +
           '<div class="room-status">' + (room.occupied ? '使用中' : '空き') + '</div>' +
           (room.occupied && room.since ? '<div class="room-time">' + formatTime(room.since) + '</div>' : '') +
-          (linkedDevice ? '<div class="sensor-badge">💡 センサー連携中</div>' : '') +
+          (linkedName ? '<div class="sensor-badge">💡 ' + esc(linkedName) + '</div>' : '') +
         '</div>' +
         '<button class="toggle-btn" data-id="' + id + '" data-occ="' + (room.occupied ? '1' : '0') + '">' +
           (room.occupied ? '✅ 空きにする' : '🔴 使用中にする') +
@@ -317,22 +242,20 @@
     });
   }
 
-  // ── 編集リスト描画（センサー紐付けセレクト付き） ──
+  // 編集リスト描画
   function renderEdit() {
     var list = document.getElementById('edit-list');
     list.innerHTML = '';
     var entries = Object.entries(rooms).sort(function(a,b){ return (a[1].order||0)-(b[1].order||0); });
     entries.forEach(function(entry) {
       var id = entry[0], room = entry[1];
-      var linkedDevice = getSensorDeviceForRoom(id);
+      var linkedDevice = getLinkedDevice(id);
 
-      // センサー選択肢を構築
       var deviceOptions = '<option value="">（センサーなし）</option>';
       knownDevices.forEach(function(dev) {
         var sel = linkedDevice === dev.deviceId ? 'selected' : '';
         deviceOptions += '<option value="' + esc(dev.deviceId) + '" ' + sel + '>' + esc(dev.deviceName || dev.deviceId) + '</option>';
       });
-      // knownDevicesにない既存連携デバイスも表示
       if (linkedDevice && !knownDevices.find(function(d){ return d.deviceId === linkedDevice; })) {
         deviceOptions += '<option value="' + esc(linkedDevice) + '" selected>' + esc(linkedDevice) + '</option>';
       }
@@ -341,7 +264,7 @@
       row.className = 'edit-row';
       row.innerHTML =
         '<div class="edit-row-top">' +
-          '<input type="text" value="' + esc(room.name) + '" maxlength="20" id="name-' + id + '">' +
+          '<input type="text" value="' + esc(room.name) + '" maxlength="30" id="name-' + id + '">' +
           '<button class="save-name-btn" data-id="' + id + '">保存</button>' +
           (entries.length > 1 ? '<button class="del-btn" data-id="' + id + '">削除</button>' : '') +
         '</div>' +
@@ -364,42 +287,47 @@
         if (Object.keys(rooms).length <= 1) return;
         var rid = btn.getAttribute('data-id');
         // センサー紐付けも削除
-        var old = getSensorDeviceForRoom(rid);
-        if (old) {
-          delete sensorMap[old];
-          sensorsRef.child(old.replace(/:/g,'_')).remove();
-        }
+        Object.entries(sensorConfig).forEach(function(entry) {
+          if (entry[1].roomKey === rid) {
+            sensorConfigRef.child(entry[0]).remove();
+          }
+        });
         roomsRef.child(rid).remove();
       });
     });
 
-    // センサーセレクト変更時
     list.querySelectorAll('.sensor-select').forEach(function(sel) {
       sel.addEventListener('change', function() {
         var rid = sel.getAttribute('data-id');
         var newDeviceId = sel.value;
-        // 既存の紐付けを解除
-        var oldDevice = getSensorDeviceForRoom(rid);
-        if (oldDevice) {
-          delete sensorMap[oldDevice];
-          sensorsRef.child(oldDevice.replace(/:/g,'_')).remove();
-        }
+
+        // 既存の紐付けを削除
+        Object.entries(sensorConfig).forEach(function(entry) {
+          if (entry[1].roomKey === rid) {
+            sensorConfigRef.child(entry[0]).remove();
+          }
+        });
+
         // 新しい紐付けを保存
         if (newDeviceId) {
-          sensorMap[newDeviceId] = rid;
-          sensorsRef.child(newDeviceId.replace(/:/g,'_')).set({ deviceId: newDeviceId, roomKey: rid });
+          var dev = knownDevices.find(function(d){ return d.deviceId === newDeviceId; });
+          sensorConfigRef.push({
+            deviceId: newDeviceId,
+            deviceName: dev ? dev.deviceName : newDeviceId,
+            roomKey: rid
+          });
         }
         renderRooms();
       });
     });
   }
 
-  // ── Firebase初期化 ──
+  // Firebase初期化
   function initFirebase(cfg) {
     firebase.initializeApp(cfg);
     db = firebase.database();
     roomsRef = db.ref('rooms');
-    sensorsRef = db.ref('sensors');
+    sensorConfigRef = db.ref('sensor_config');
 
     db.ref('.info/connected').on('value', function(snap) {
       var ok = snap.val();
@@ -407,17 +335,10 @@
       document.getElementById('conn-text').textContent = ok ? '接続中' : '切断';
     });
 
-    // センサーマップ読み込み
-    sensorsRef.on('value', function(snap) {
-      var data = snap.val() || {};
-      sensorMap = {};
-      Object.values(data).forEach(function(v) {
-        if (v && v.deviceId && v.roomKey) {
-          sensorMap[v.deviceId] = v.roomKey;
-        }
-      });
-      if (editOpen) renderEdit();
+    sensorConfigRef.on('value', function(snap) {
+      sensorConfig = snap.val() || {};
       renderRooms();
+      if (editOpen) renderEdit();
     });
 
     roomsRef.on('value', function(snap) {
@@ -435,20 +356,9 @@
       if (editOpen) renderEdit();
       updateFooter();
     });
-
-    // APIトークンをFirebaseから読み込み
-    db.ref('switchbot_config').once('value', function(snap) {
-      var cfg = snap.val();
-      if (cfg) {
-        sbToken = cfg.token || '';
-        sbSecret = cfg.secret || '';
-        document.getElementById('sb-token').value = sbToken;
-        document.getElementById('sb-secret').value = sbSecret;
-      }
-    });
   }
 
-  // ── 編集パネル開閉 ──
+  // 編集パネル開閉
   document.getElementById('edit-header').addEventListener('click', function() {
     editOpen = !editOpen;
     document.getElementById('edit-toggle').className = 'edit-toggle' + (editOpen ? ' open' : '');
@@ -456,41 +366,23 @@
     if (editOpen) renderEdit();
   });
 
-  // ── SwitchBotパネル開閉 ──
-  document.getElementById('sb-header').addEventListener('click', function() {
-    sbOpen = !sbOpen;
-    document.getElementById('sb-toggle').className = 'edit-toggle' + (sbOpen ? ' open' : '');
-    document.getElementById('sb-body').className = 'switchbot-body' + (sbOpen ? ' open' : '');
+  // センサーパネル開閉
+  document.getElementById('sensor-header').addEventListener('click', function() {
+    sensorOpen = !sensorOpen;
+    document.getElementById('sensor-toggle').className = 'edit-toggle' + (sensorOpen ? ' open' : '');
+    document.getElementById('sensor-body').className = 'sensor-body' + (sensorOpen ? ' open' : '');
   });
 
-  // ── APIトークン保存 ──
-  document.getElementById('sb-save-btn').addEventListener('click', function() {
-    sbToken = document.getElementById('sb-token').value.trim();
-    sbSecret = document.getElementById('sb-secret').value.trim();
-    if (!sbToken || !sbSecret) return;
-    db.ref('switchbot_config').set({ token: sbToken, secret: sbSecret });
+  // デバイス一覧取得
+  document.getElementById('fetch-devices-btn').addEventListener('click', async function() {
     var st = document.getElementById('sb-status');
-    st.className = 'sb-status ok';
-    st.textContent = '✅ 保存しました';
-    setTimeout(function(){ st.className = 'sb-status'; }, 3000);
-  });
-
-  // ── デバイス一覧取得ボタン ──
-  document.getElementById('sb-fetch-btn').addEventListener('click', async function() {
-    sbToken = document.getElementById('sb-token').value.trim();
-    sbSecret = document.getElementById('sb-secret').value.trim();
-    var st = document.getElementById('sb-status');
-    var devList = document.getElementById('sb-devices');
-    if (!sbToken || !sbSecret) {
-      st.className = 'sb-status err';
-      st.textContent = '⚠️ トークンとシークレットを入力してください';
-      return;
-    }
+    var devList = document.getElementById('device-list');
     st.className = 'sb-status info';
     st.textContent = '🔄 取得中...';
     devList.innerHTML = '';
     try {
-      var data = await fetchSwitchBotDevices(sbToken, sbSecret);
+      var res = await fetch(GAS_URL + '?action=getDevices');
+      var data = await res.json();
       if (data.statusCode !== 100) {
         st.className = 'sb-status err';
         st.textContent = '❌ エラー: ' + (data.message || data.statusCode);
@@ -501,18 +393,14 @@
         return { deviceId: d.deviceId, deviceName: d.deviceName, deviceType: d.deviceType };
       });
       st.className = 'sb-status ok';
-      st.textContent = '✅ ' + devices.length + ' 台のデバイスを取得しました';
-      if (devices.length === 0) {
-        devList.innerHTML = '<div style="font-size:12px;color:var(--text-muted);padding:8px 0;">デバイスが見つかりません</div>';
-      } else {
-        devList.innerHTML = devices.map(function(d) {
-          return '<div class="sb-device-item">' +
-            '<div style="flex:1"><div style="font-size:12px;font-weight:600">' + esc(d.deviceName || '不明') + '</div>' +
-            '<div class="sb-device-id">' + esc(d.deviceId) + '</div></div>' +
-            '<div class="sb-device-type">' + esc(d.deviceType || '') + '</div>' +
-            '</div>';
-        }).join('');
-      }
+      st.textContent = '✅ ' + devices.length + ' 台取得しました。応接室の編集画面からセンサーを紐付けてください。';
+      devList.innerHTML = devices.map(function(d) {
+        return '<div class="device-item">' +
+          '<div><div class="device-name">' + esc(d.deviceName || '不明') + '</div>' +
+          '<div class="device-id">' + esc(d.deviceId) + '</div></div>' +
+          '<div class="device-type">' + esc(d.deviceType || '') + '</div>' +
+          '</div>';
+      }).join('');
       if (editOpen) renderEdit();
     } catch(e) {
       st.className = 'sb-status err';
@@ -520,7 +408,7 @@
     }
   });
 
-  // ── 応接室追加 ──
+  // 応接室追加
   document.getElementById('add-room-btn').addEventListener('click', function() {
     var input = document.getElementById('new-room-input');
     var name = input.value.trim();
@@ -529,13 +417,11 @@
     input.value = '';
   });
 
-  // ── 定期更新（30秒） ──
   setInterval(function() {
     if (Object.keys(rooms).length) { renderRooms(); updateFooter(); }
-    pollSensors();
   }, 30000);
 
-  // ── 合言葉認証 ──
+  // 合言葉認証
   var PASSWORD = '210';
   var AUTH_KEY = 'meeting-auth';
 
@@ -565,7 +451,7 @@
 
   checkAuth();
 
-  // ── Firebase設定 ──
+  // Firebase設定
   initFirebase({
     apiKey: "AIzaSyBCcZwtlIJ9yOSls1bM1r4DXejLWaws2fo",
     authDomain: "meeting-rooms-102af.firebaseapp.com",
